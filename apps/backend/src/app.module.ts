@@ -2,17 +2,16 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { AppResolver } from './app.resolver';
+import { UserResolver } from './resolvers/user.resolver';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      plugins: [],
-      //context: ({ req }) => ({ req }),
+      context: ({ req }) => ({ req }),
     }),
   ],
-  providers: [AppResolver],
+  providers: [UserResolver],
 })
 export class AppModule {}
