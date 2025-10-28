@@ -1,4 +1,5 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
+import { TopicEntity } from './topic.entity';
 
 @ObjectType()
 export class UserEntity {
@@ -11,8 +12,8 @@ export class UserEntity {
   @Field({ nullable: true })
   wallet?: string;
 
-  /*@Field({ nullable: true })
-  topics?: Topic[];*/
+  @Field(() => [TopicEntity], { nullable: true })
+  topics?: TopicEntity[];
 
   @Field()
   createdAt: Date;

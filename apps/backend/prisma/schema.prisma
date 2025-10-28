@@ -39,6 +39,5 @@ model Entry {
   topic     Topic    @relation(fields: [topicId], references: [id])
   content   String
   progress  Int      @default(0)
-  proofHash String?
   createdAt DateTime @default(now())
 }
